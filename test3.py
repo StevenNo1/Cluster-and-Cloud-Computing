@@ -142,7 +142,7 @@ if __name__ == '__main__':
     # get MPI size, rank, and processor name
     size = comm.Get_size()
     rank = comm.Get_rank()
-    name = comm.Get_name()
+    #name = comm.Get_name()
     
     
     
@@ -190,15 +190,10 @@ if __name__ == '__main__':
     comm.barrier()
     
     if rank == 0:
-        #comm.barrier()
-        
-    
-    #comm.barrier()
-    #middle_result_list = comm.gather(middle_result, root=0)
         print('middle_result_list:',middle_result_list)
         result_dict={}
-        if rank == 0:
-            for i in middle_result_list:
+        for i in middle_result_list:
+            if i != None:
                 [language, grid_id] = i
                 result_dict = sum_the_output(result_dict, language, grid_id)
         result_output(result_dict, language_dict)
