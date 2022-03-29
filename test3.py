@@ -76,7 +76,7 @@ def sum_the_output(result_dict, language, grid_id):
 
 def process_tweets(size, rank, grids, smallest_point):
     middle_result_list = []
-    with open('./bigTwitter.json', 'r', encoding="utf8") as f:   
+    with open('./smallTwitter.json', 'r', encoding="utf8") as f:   
         for i, line in enumerate(f):
             # send data to processor rank
             if i%size == rank:
@@ -90,7 +90,7 @@ def process_tweets(size, rank, grids, smallest_point):
                     if line_data["doc"]["coordinates"] != None and distinguish_one_line(line_data, grids, smallest_point) != False:
                         middle_result = distinguish_one_line(line_data, grids, smallest_point)
                         #result_dict = sum_the_output(result_dict, language, grid_id)
-                        #print(middle_result)
+                        print('middle_result:', middle_result)
                         return middle_result
                     else:
                         continue
@@ -183,9 +183,9 @@ if __name__ == '__main__':
     '''
     
     middle_result_list = process_tweets(size, rank, grids, smallest_point)
-    print('middle_result_list:', middle_result_list)
+    print('middle_result_list1:', middle_result_list)
     middle_result_list = comm.gather(middle_result_list, root=0)
-    print('middle_result_list:', middle_result_list)
+    print('middle_result_list2:', middle_result_list)
     
     comm.barrier()
     
