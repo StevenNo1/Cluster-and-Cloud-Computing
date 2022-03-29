@@ -195,7 +195,7 @@ if __name__ == '__main__':
     
     #comm.barrier()
     #middle_result_list = comm.gather(middle_result, root=0)
-    
+        print('middle_result_list:',middle_result_list)
         result_dict={}
         if rank == 0:
             for i in middle_result_list:
