@@ -74,7 +74,7 @@ def sum_the_output(result_dict, language, grid_id):
         result_dict[grid_id] = [Total_Tweets, language_dict]
     return result_dict
 
-def process_tweets(size, rank, grids, smallest_point, middle_result_list = []):
+def process_tweets(size, rank, grids, smallest_point, middle_result_list):
     with open('./smallTwitter.json', 'r', encoding="utf8") as f:   
         for i, line in enumerate(f):
             # send data to processor rank
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     
     
     
-    middle_result_list = process_tweets(size, rank, grids, smallest_point)
+    middle_result_list = process_tweets(size, rank, grids, smallest_point, middle_result_list = [])
     print('middle_result_list(after return):', middle_result_list)
     middle_result_list = comm.gather(middle_result_list, root=0)
     print('middle_result_list(after gather):', middle_result_list)
