@@ -87,7 +87,7 @@ def process_tweets(size, rank, grids, smallest_point, middle_result_list):
                     if line_data["doc"]["coordinates"] != None and distinguish_one_line(line_data, grids, smallest_point) != False:
                         middle_result = distinguish_one_line(line_data, grids, smallest_point)
                         #result_dict = sum_the_output(result_dict, language, grid_id)
-                        print('middle_result:', middle_result)
+                        #print('middle_result:', middle_result)
                         #return middle_result
                         middle_result_list.append(middle_result)
                     else:
@@ -96,7 +96,7 @@ def process_tweets(size, rank, grids, smallest_point, middle_result_list):
                     # continue reading even if an incorrectly formatted json statement is read
                     continue
             #middle_result_list.append(middle_result)
-        print('middle_result_list(in function):', middle_result_list)
+        #print('middle_result_list(in function):', middle_result_list)
         return middle_result_list
     f.close()
     #return middle_result_list
@@ -148,14 +148,14 @@ if __name__ == '__main__':
     middle_result_list = []
     
     middle_result_list = process_tweets(size, rank, grids, smallest_point, middle_result_list)
-    print('middle_result_list(after return):', middle_result_list)
+    #print('middle_result_list(after return):', middle_result_list)
     middle_result_list = comm.gather(middle_result_list, root=0)
-    print('middle_result_list(after gather):', middle_result_list)
+    #print('middle_result_list(after gather):', middle_result_list)
     
     comm.barrier()
     
     if rank == 0:
-        print('middle_result_list:',middle_result_list)
+        #print('middle_result_list:',middle_result_list)
         result_dict={}
         for i in middle_result_list:
             if i != None and i != []:
