@@ -79,7 +79,7 @@ def process_tweets(size, rank, grids, smallest_point, middle_result_list):
         for i, line in enumerate(f):
             # send data to processor rank
             if i%size == rank:
-                print('rank:', i)
+                #print('rank:', i)
                 middle_result = []
                 line = line.rstrip("]" + "[" + "," + "\n") 
                 try:
