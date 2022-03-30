@@ -79,7 +79,7 @@ def process_tweets(size, rank, grids, smallest_point, middle_result_list):
         for i, line in enumerate(f):
             # send data to processor rank
             if i%size == rank:
-                print('rank:'i)
+                print('rank:', i)
                 middle_result = []
                 line = line.rstrip("]" + "[" + "," + "\n") 
                 try:
@@ -96,7 +96,7 @@ def process_tweets(size, rank, grids, smallest_point, middle_result_list):
                     # continue reading even if an incorrectly formatted json statement is read
                     continue
             #middle_result_list.append(middle_result)
-            print('middle_result_list(in function):', middle_result_list)
+        print('middle_result_list(in function):', middle_result_list)
         return middle_result_list
     f.close()
     #return middle_result_list
@@ -145,9 +145,9 @@ if __name__ == '__main__':
     #name = comm.Get_name()
     
     
+    middle_result_list = []
     
-    
-    middle_result_list = process_tweets(size, rank, grids, smallest_point, middle_result_list = [])
+    middle_result_list = process_tweets(size, rank, grids, smallest_point, middle_result_list)
     print('middle_result_list(after return):', middle_result_list)
     middle_result_list = comm.gather(middle_result_list, root=0)
     print('middle_result_list(after gather):', middle_result_list)
