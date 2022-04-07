@@ -1,6 +1,10 @@
 # Cluster-and-Cloud-Computing
 The University of Melbourne - Cluster and Cloud Computing (COMP90024)
 
+The Project is still developing
+
+Some useful resources(Some are Chinese and some are English):
+
 [Python并行计算（大部头，简略看）](https://python-parallel-programmning-cookbook.readthedocs.io/zh_CN/latest/chapter1/index.html)
 
 [北大HPC文档，里面有SBatch，Squeue的很多概念与使用方法](https://hpc.pku.edu.cn/_book/)
